@@ -1,0 +1,84 @@
+diff a/MAP/Game.tscn b/MAP/Game.tscn	(rejected hunks)
+@@ -1,4 +1,4 @@
+-[gd_scene load_steps=96 format=2]
++[gd_scene load_steps=99 format=2]
+ 
+ [ext_resource path="res://Graphic/Character/ZGY_idle_1_03.png" type="Texture" id=1]
+ [ext_resource path="res://Graphic/Ui/UI_Board.png" type="Texture" id=2]
+@@ -65,6 +65,7 @@
+ [ext_resource path="res://Graphic/Ui/Talk_3.png" type="Texture" id=63]
+ [ext_resource path="res://Graphic/Ui/Talk_2.png" type="Texture" id=64]
+ [ext_resource path="res://GD/RDM_talk.gd" type="Script" id=65]
++[ext_resource path="res://Audio/SE/patin.mp3" type="AudioStream" id=66]
+ 
+ [sub_resource type="SpriteFrames" id=10]
+ animations = [ {
+@@ -2781,6 +2782,37 @@
+ "values": [ Transform2D( 1.111, 0, 0, 1.111, 0, 0 ) ]
+ }
+ 
++[sub_resource type="Animation" id=33]
++resource_name = "1"
++length = 0.5
++tracks/0/type = "value"
++tracks/0/path = NodePath("../QTE:modulate")
++tracks/0/interp = 1
++tracks/0/loop_wrap = true
++tracks/0/imported = false
++tracks/0/enabled = true
++tracks/0/keys = {
++"times": PoolRealArray( 0, 0.5 ),
++"transitions": PoolRealArray( 1, 1 ),
++"update": 0,
++"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
++}
++
++[sub_resource type="Animation" id=34]
++length = 0.001
++tracks/0/type = "value"
++tracks/0/path = NodePath("../QTE:modulate")
++tracks/0/interp = 1
++tracks/0/loop_wrap = true
++tracks/0/imported = false
++tracks/0/enabled = true
++tracks/0/keys = {
++"times": PoolRealArray( 0 ),
++"transitions": PoolRealArray( 1 ),
++"update": 0,
++"values": [ Color( 1, 1, 1, 1 ) ]
++}
++
+ [node name="Game" type="Node2D"]
+ script = ExtResource( 7 )
+ 
+@@ -2835,7 +2867,7 @@
+ position = Vector2( 5.69995, -35.0437 )
+ frames = SubResource( 11 )
+ animation = "happy"
+-frame = 9
++frame = 5
+ 
+ [node name="hair_2" type="Sprite" parent="EV_01/EV_01/head"]
+ position = Vector2( -4.67212, -160.408 )
+@@ -3097,6 +3129,9 @@
+ [node name="SE_hit" type="AudioStreamPlayer" parent="QTE"]
+ stream = ExtResource( 52 )
+ 
++[node name="SE_check" type="AudioStreamPlayer" parent="QTE"]
++stream = ExtResource( 66 )
++
+ [node name="Loose" type="AnimationPlayer" parent="QTE"]
+ root_node = NodePath("../../LS_1")
+ anims/1 = SubResource( 25 )
+@@ -3160,6 +3195,11 @@
+ "anims/2 2" = SubResource( 24 )
+ anims/RESET = SubResource( 14 )
+ 
++[node name="QTE_hide" type="AnimationPlayer" parent="."]
++root_node = NodePath("../HZ_1")
++anims/1 = SubResource( 33 )
++anims/RESET = SubResource( 34 )
++
+ [connection signal="pressed" from="CanvasLayer/Talk" to="QTE" method="_on_Talk_pressed"]
+ [connection signal="pressed" from="CanvasLayer/Talk/Hit" to="QTE" method="_on_Hit_pressed"]
+ [connection signal="ENV_restart" from="QTE" to="." method="_on_QTE_ENV_restart"]

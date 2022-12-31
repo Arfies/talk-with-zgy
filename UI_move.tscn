@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Graphic/Ui/move_4.png" type="Texture" id=1]
+[ext_resource path="res://Graphic/Ui/move_2.png" type="Texture" id=2]
+[ext_resource path="res://Graphic/Ui/move_1.png" type="Texture" id=3]
+[ext_resource path="res://Graphic/Ui/move_3.png" type="Texture" id=4]
+
+[node name="UI_move" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Talk" type="TouchScreenButton" parent="."]
+position = Vector2( 62, 924 )
+scale = Vector2( 1.58394, 1.58394 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 2 )
+passby_press = true
+action = "left"
+
+[node name="Hit" type="TouchScreenButton" parent="."]
+position = Vector2( 447, 924 )
+scale = Vector2( 1.58394, 1.58394 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 1 )
+passby_press = true
+action = "right"
